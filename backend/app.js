@@ -43,18 +43,11 @@ const authLimiter = rateLimit({
 app.use(express.json({ limit: "10kb" })); // prevent large payload attacks
 app.use(cookieParser());
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
-    const normalizedFrontend = frontendUrl.endsWith('/') ? frontendUrl.slice(0, -1) : frontendUrl;
-    const normalizedOrigin = origin.endsWith('/') ? origin.slice(0, -1) : origin;
-    
-    if (normalizedOrigin === normalizedFrontend || normalizedOrigin === "http://localhost:5173") {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    "http://localhost:5173",
+    "https://trip-crafter-254v.vercel.app",
+    process.env.FRONTEND_URL
+  ].filter(Boolean),
   credentials: true,
 }));
 
