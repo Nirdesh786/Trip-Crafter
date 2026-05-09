@@ -31,7 +31,7 @@ function AdminDashboard() {
     const fetchStats = async () => {
       setStatsLoading(true);
       try {
-        const res = await axios.get("http://localhost:4000/api/auth/admin/stats", { withCredentials: true });
+        const res = await axios.get("https://trip-crafter.onrender.com/api/auth/admin/stats", { withCredentials: true });
         setStats(res.data);
       } catch {
         toast.error("Failed to load analytics");

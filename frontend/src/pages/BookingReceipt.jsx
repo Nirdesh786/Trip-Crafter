@@ -13,7 +13,7 @@ function BookingReceipt() {
   useEffect(() => {
     const fetchBooking = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/bookings/${id}`, {
+        const res = await axios.get(`https://trip-crafter.onrender.com/api/bookings/${id}`, {
           withCredentials: true,
         });
         setBooking(res.data);

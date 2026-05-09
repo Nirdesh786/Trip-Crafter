@@ -12,7 +12,7 @@ function Wishlist() {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/wishlist", {
+        const res = await axios.get("https://trip-crafter.onrender.com/api/wishlist", {
           withCredentials: true,
         });
         setWishlist(res.data);
@@ -31,7 +31,7 @@ function Wishlist() {
 
     setRemovingId(placeId);
     try {
-      await axios.delete(`http://localhost:4000/api/wishlist/${placeId}`, {
+      await axios.delete(`https://trip-crafter.onrender.com/api/wishlist/${placeId}`, {
         withCredentials: true,
       });
       setWishlist((prev) => prev.filter((item) => item._id !== placeId));

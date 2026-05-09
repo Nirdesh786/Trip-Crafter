@@ -35,7 +35,7 @@ function Explore() {
       try {
         setLoading(true);
         // Build URL based on category
-        let url = "http://localhost:4000/api/places?limit=120";
+        let url = "https://trip-crafter.onrender.com/api/places?limit=120";
         if (activeCategory !== "All") {
           url += `&category=${encodeURIComponent(activeCategory)}`;
         }

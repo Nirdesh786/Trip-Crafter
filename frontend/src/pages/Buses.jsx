@@ -19,7 +19,7 @@ function Buses() {
   useEffect(() => {
     const fetchBuses = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/buses?limit=200");
+        const res = await axios.get("https://trip-crafter.onrender.com/api/buses?limit=200");
         setAllBuses(res.data);
       } catch {
         setError("Failed to fetch buses. Please try again later.");

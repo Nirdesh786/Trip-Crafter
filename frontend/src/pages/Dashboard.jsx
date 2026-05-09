@@ -41,9 +41,9 @@ function Dashboard() {
       }
 
       const [placesResult, bookingsResult, wishlistResult] = await Promise.allSettled([
-        axios.get("http://localhost:4000/api/places?popular=true&limit=8"),
-        axios.get("http://localhost:4000/api/bookings/mybookings", { withCredentials: true }),
-        axios.get("http://localhost:4000/api/wishlist", { withCredentials: true }),
+        axios.get("https://trip-crafter.onrender.com/api/places?popular=true&limit=8"),
+        axios.get("https://trip-crafter.onrender.com/api/bookings/mybookings", { withCredentials: true }),
+        axios.get("https://trip-crafter.onrender.com/api/wishlist", { withCredentials: true }),
       ]);
 
       if (!isMounted) return;
@@ -115,7 +115,7 @@ function Dashboard() {
   };
 
   const loadBookings = async () => {
-    const bookingRes = await axios.get("http://localhost:4000/api/bookings/mybookings", {
+    const bookingRes = await axios.get("https://trip-crafter.onrender.com/api/bookings/mybookings", {
       withCredentials: true,
     });
     setBookings(bookingRes.data);
@@ -133,7 +133,7 @@ function Dashboard() {
     setCancelModal({ open: false, bookingId: null });
     try {
       await axios.post(
-        `http://localhost:4000/api/bookings/${bookingId}/cancel`,
+        `https://trip-crafter.onrender.com/api/bookings/${bookingId}/cancel`,
         {},
         { withCredentials: true }
       );
@@ -150,7 +150,7 @@ function Dashboard() {
     if (removingWishlistId) return;
     setRemovingWishlistId(placeId);
     try {
-      await axios.delete(`http://localhost:4000/api/wishlist/${placeId}`, {
+      await axios.delete(`https://trip-crafter.onrender.com/api/wishlist/${placeId}`, {
         withCredentials: true,
       });
       setWishlist((prev) => prev.filter((p) => p._id !== placeId));

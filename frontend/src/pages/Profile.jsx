@@ -30,7 +30,7 @@ function Profile() {
     if (!user) { navigate("/login"); return; }
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/auth/me", { withCredentials: true });
+        const res = await axios.get("https://trip-crafter.onrender.com/api/auth/me", { withCredentials: true });
         setProfile(res.data);
         setNameInput(res.data.name);
       } catch {
@@ -48,7 +48,7 @@ function Profile() {
     setNameLoading(true);
     try {
       const res = await axios.put(
-        "http://localhost:4000/api/auth/profile",
+        "https://trip-crafter.onrender.com/api/auth/profile",
         { name: nameInput.trim() },
         { withCredentials: true }
       );
@@ -71,7 +71,7 @@ function Profile() {
     setPasswordLoading(true);
     try {
       await axios.put(
-        "http://localhost:4000/api/auth/profile",
+        "https://trip-crafter.onrender.com/api/auth/profile",
         { currentPassword, newPassword },
         { withCredentials: true }
       );

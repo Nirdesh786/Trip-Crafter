@@ -51,7 +51,7 @@ function HotelDetails() {
   useEffect(() => {
     const fetchHotel = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/hotels/${id}`);
+        const res = await axios.get(`https://trip-crafter.onrender.com/api/hotels/${id}`);
         setHotel(res.data);
         setLoading(false);
       } catch (err) {

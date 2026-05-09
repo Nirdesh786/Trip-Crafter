@@ -16,13 +16,13 @@ function Navbar() {
 
   useEffect(() => {
     if (!user) { setBookingCount(0); setWishlistCount(0); return; }
-    axios.get("http://localhost:4000/api/auth/me", { withCredentials: true })
+    axios.get("https://trip-crafter.onrender.com/api/auth/me", { withCredentials: true })
       .then((res) => { setBookingCount(res.data.bookingCount || 0); setWishlistCount(res.data.wishlistCount || 0); })
       .catch(() => {});
   }, [user, location.pathname]);
 
   const handleLogout = async () => {
-    try { await axios.post("http://localhost:4000/api/auth/logout", {}, { withCredentials: true }); } catch {}
+    try { await axios.post("https://trip-crafter.onrender.com/api/auth/logout", {}, { withCredentials: true }); } catch {}
     logout(); navigate("/login");
   };
 

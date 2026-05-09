@@ -17,7 +17,7 @@ function ResetPassword() {
     if (password.length < 6) { toast.error("Password must be at least 6 characters"); return; }
     setLoading(true);
     try {
-      await axios.post(`http://localhost:4000/api/auth/reset-password/${token}`, { password });
+      await axios.post(`https://trip-crafter.onrender.com/api/auth/reset-password/${token}`, { password });
       toast.success("Password reset! Redirecting to login...");
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {

@@ -20,17 +20,17 @@ function PlaceDetails() {
     const fetchData = async () => {
       try {
         // Fetch place details
-        const placeRes = await axios.get(`http://localhost:4000/api/places/${id}`);
+        const placeRes = await axios.get(`https://trip-crafter.onrender.com/api/places/${id}`);
         setPlace(placeRes.data);
 
         // Fetch hotels linked to this place
-        const hotelRes = await axios.get(`http://localhost:4000/api/hotels?place=${id}`);
+        const hotelRes = await axios.get(`https://trip-crafter.onrender.com/api/hotels?place=${id}`);
         setHotels(hotelRes.data);
 
         if (user) {
           try {
             const wishlistCheckRes = await axios.get(
-              `http://localhost:4000/api/wishlist/check/${id}`,
+              `https://trip-crafter.onrender.com/api/wishlist/check/${id}`,
               { withCredentials: true }
             );
             setIsSaved(wishlistCheckRes.data?.isSaved || false);
@@ -66,13 +66,13 @@ function PlaceDetails() {
     setSaveLoading(true);
     try {
       if (isSaved) {
-        await axios.delete(`http://localhost:4000/api/wishlist/${id}`, {
+        await axios.delete(`https://trip-crafter.onrender.com/api/wishlist/${id}`, {
           withCredentials: true,
         });
         setIsSaved(false);
       } else {
         await axios.post(
-          `http://localhost:4000/api/wishlist/${id}`,
+          `https://trip-crafter.onrender.com/api/wishlist/${id}`,
           {},
           { withCredentials: true }
         );

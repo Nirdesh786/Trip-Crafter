@@ -26,7 +26,7 @@ function Hotels() {
     const fetchHotels = async () => {
       setLoading(true);
       try {
-        let url = "http://localhost:4000/api/hotels?limit=200";
+        let url = "https://trip-crafter.onrender.com/api/hotels?limit=200";
         if (placeFilter) url += `&place=${encodeURIComponent(placeFilter)}`;
         const res = await axios.get(url);
         setAllHotels(res.data);

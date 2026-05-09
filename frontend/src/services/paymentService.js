@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE = "http://localhost:4000/api/bookings";
+const BASE = "https://trip-crafter.onrender.com/api/bookings";
 
 /**
  * Step 1: Create a booking (status: Pending) and return the booking ID.

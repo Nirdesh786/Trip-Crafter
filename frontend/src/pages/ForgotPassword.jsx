@@ -12,7 +12,7 @@ function ForgotPassword() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:4000/api/auth/forgot-password", { email });
+      await axios.post("https://trip-crafter.onrender.com/api/auth/forgot-password", { email });
       setSent(true);
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");

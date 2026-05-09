@@ -23,10 +23,10 @@ function AdminForms({ initialTab = "destination" }) {
     setLoading(true); setStatus({ type: "", message: "" });
     try {
       const activitiesArray = placeData.activities.split(",").map((i) => i.trim()).filter(Boolean);
-      await axios.post("http://localhost:4000/api/places", { ...placeData, activities: activitiesArray }, { withCredentials: true });
+      await axios.post("https://trip-crafter.onrender.com/api/places", { ...placeData, activities: activitiesArray }, { withCredentials: true });
       setStatus({ type: "success", message: "Destination added successfully!" });
       setPlaceData({ name: "", state: "", category: "Hill Station", description: "", imageUrl: "", popular: false, activities: "" });
-      const res = await axios.get("http://localhost:4000/api/places");
+      const res = await axios.get("https://trip-crafter.onrender.com/api/places");
       setPlaces(res.data);
     } catch (err) {
       setStatus({ type: "error", message: err.response?.data?.message || "Failed to add destination" });
@@ -46,7 +46,7 @@ function AdminForms({ initialTab = "destination" }) {
       const imagesArray = hotelData.images.split(",").map((i) => i.trim()).filter(Boolean);
       const amenitiesArray = hotelData.amenities.split(",").map((i) => i.trim()).filter(Boolean);
       const payload = { name: hotelData.name, place: hotelData.place, location: { city: hotelData.city, state: hotelData.state, country: hotelData.country }, address: hotelData.address, description: hotelData.description, images: imagesArray, pricePerNight: Number(hotelData.pricePerNight), rating: Number(hotelData.rating), numReviews: Number(hotelData.numReviews), amenities: amenitiesArray, roomsAvailable: Number(hotelData.roomsAvailable), isPopular: hotelData.isPopular };
-      await axios.post("http://localhost:4000/api/hotels", payload, { withCredentials: true });
+      await axios.post("https://trip-crafter.onrender.com/api/hotels", payload, { withCredentials: true });
       setStatus({ type: "success", message: "Hotel added successfully!" });
       setHotelData({ name: "", place: "", city: "", state: "", country: "India", address: "", description: "", images: "", pricePerNight: "", rating: 0, numReviews: 0, amenities: "", roomsAvailable: "", isPopular: false });
     } catch (err) {
@@ -62,7 +62,7 @@ function AdminForms({ initialTab = "destination" }) {
     try {
       const imagesArray = busData.images.split(",").map((i) => i.trim()).filter(Boolean);
       const payload = { operatorName: busData.operatorName, busType: busData.busType, origin: busData.origin, destination: busData.destination, departureTime: busData.departureTime, arrivalTime: busData.arrivalTime, pricePerSeat: Number(busData.pricePerSeat), totalSeats: Number(busData.totalSeats), images: imagesArray };
-      await axios.post("http://localhost:4000/api/buses", payload, { withCredentials: true });
+      await axios.post("https://trip-crafter.onrender.com/api/buses", payload, { withCredentials: true });
       setStatus({ type: "success", message: "Bus added successfully!" });
       setBusData({ operatorName: "", busType: "AC Sleeper", origin: "", destination: "", departureTime: "", arrivalTime: "", pricePerSeat: "", totalSeats: "", images: "" });
     } catch (err) {
@@ -74,7 +74,7 @@ function AdminForms({ initialTab = "destination" }) {
   const handleTabChange = async (tab) => {
     setActiveTab(tab); setStatus({ type: "", message: "" });
     if (tab === "hotel" && places.length === 0) {
-      try { const res = await axios.get("http://localhost:4000/api/places"); setPlaces(res.data); } catch {}
+      try { const res = await axios.get("https://trip-crafter.onrender.com/api/places"); setPlaces(res.data); } catch {}
     }
   };
 
