@@ -98,4 +98,4 @@ FRONTEND_URL=http://localhost:5173
 
 ## 🙋 Author
 
-Built with by [Your Name](https://github.com/YOUR_USERNAME)
+Built with by [Nirdesh Yadav](https://github.com/YOUR_USERNAME)
